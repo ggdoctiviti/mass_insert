@@ -13,7 +13,7 @@ module MassInsert
 
       def on_duplicate_key_update_values
         quoted_columns.map do |quoted_column|
-          "#{quoted_column}=#{quoted_column}"
+          "#{quoted_column}=VALUES(#{quoted_column})"
         end.join(',')
       end
     end
